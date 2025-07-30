@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ridwanur Rahman Mazumder - Portfolio</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Colors -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4f46e5",
+            accent: "#9333ea",
+            soft: "#f0f4ff"
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Dark Mode toggle script -->
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle("dark");
+      localStorage.setItem("darkMode", document.documentElement.classList.contains("dark"));
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.documentElement.classList.add("dark");
+      }
+    };
+  </script>
+
+  <!-- Custom animation -->
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+  </style>
+
+</head>
+
+<body class="bg-soft dark:bg-gray-900 text-gray-900 dark:text-white font-sans transition-colors duration-500 min-h-screen">
+<!-- Navbar -->
+<header class="bg-gradient-to-r from-white via-blue-100 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 shadow-md sticky top-0 z-50">
+
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+  Ridwan
+</h1>
+
+
+      <!-- Hamburger Icon -->
+      <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none">
+        <span id="menu-icon">☰</span>
+      </button>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-6 items-center text-lg font-medium">
+        <a href="#about" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out">About</a>
+        <a href="#skills" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out">Skills</a>
+        <a href="#education" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out">Education</a>
+        <a href="#experience" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out">Experience</a>
+        <a href="#projects" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out">Projects</a>
+        <a href="#contact" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out">Contact</a>
+        <button
+          onclick="toggleDarkMode()"
+          class="px-3 py-2 bg-gray-200 dark:bg-gray-700 text-sm rounded-full shadow hover:scale-105 transition-transform"
+          aria-label="Toggle Light/Dark Mode"
+        >
+          🌓
+        </button>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav
+      id="mobile-menu"
+      class="mt-4 flex-col space-y-4 text-lg font-medium md:hidden hidden"
+    >
+      <a href="#about" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out block">About</a>
+      <a href="#skills" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out block">Skills</a>
+      <a href="#education" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out block">Education</a>
+      <a href="#experience" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out block">Experience</a>
+      <a href="#projects" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out block">Projects</a>
+      <a href="#contact" class="hover:text-primary dark:hover:text-accent transform hover:scale-110 transition duration-300 ease-in-out block">Contact</a>
+      <button
+        onclick="toggleDarkMode()"
+        class="px-3 py-2 bg-gray-200 dark:bg-gray-700 text-sm rounded-full shadow w-max hover:scale-105 transition-transform"
+        aria-label="Toggle Light/Dark Mode"
+      >
+        🌓
+      </button>
+    </nav>
+  </div>
+</header>
+
+
+<!-- JavaScript -->
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+
+    // Icon toggle ☰ ↔ ✖
+    if (mobileMenu.classList.contains('hidden')) {
+      menuIcon.textContent = '☰';
+    } else {
+      menuIcon.textContent = '✖';
+    }
+  });
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+  }
+</script>
+
+<!-- Hero Section -->
+<style>
+  /* Mobile-first: mobile.png */
+  .hero-bg {
+    background-image: url('mobile.png');
+  }
+  /* Desktop and above: portfolio.png */
+  @media (min-width: 768px) {
+    .hero-bg {
+      background-image: url('portfolio.png');
+    }
+  }
+</style>
+
+<section
+  class="hero-bg relative w-full h-screen bg-center bg-no-repeat bg-cover flex flex-col justify-end items-center animate-fadeIn"
+>
+  <div class="pb-10">
+    <a
+      href="#contact"
+      class="inline-block px-6 py-3 bg-white text-primary font-semibold rounded-lg shadow hover:bg-blue-100 transition"
+    >
+      Contact Me
+    </a>
+  </div>
+</section>
+
+<main>
+<!-- About Section -->
+<section id="about" class="py-16 px-6 md:px-24 bg-gradient-to-r from-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 animate-fadeIn">
+
+  <h2 class="text-4xl font-bold mb-6 text-primary dark:text-accent">About Me</h2>
+  <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+    I'm a passionate <span class="font-semibold text-indigo-600 dark:text-indigo-400">Java Developer</span> and final-year Computer Science student at BUBT. I specialize in building modern, scalable, and responsive web applications.
+    <br class="hidden md:block mt-2" />
+    My core stack includes <span class="font-medium text-gray-900 dark:text-white">Java, Spring Boot, HTML, CSS, JavaScript, Tailwind CSS, Bootstrap</span>, and I have hands-on experience with <span class="font-medium text-gray-900 dark:text-white">Firebase, MySQL, and PHP</span>. I’m also skilled in Android app development using Java.
+    <br class="hidden md:block mt-2" />
+    Currently, I’m actively involved in <span class="font-semibold text-indigo-600 dark:text-indigo-400">research work in Machine Learning</span>, exploring real-world use cases and contributing to academic studies.
+    <br class="hidden md:block mt-2" />
+    I love solving real-world problems with code and am always eager to explore new technologies to keep growing as a developer.
+  </p>
+</section>
+
+
+
+<!-- Skills Section -->
+<section
+  id="skills"
+  class="py-20 px-6 md:px-24 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-600 animate-fadeIn"
+>
+
+
+
+<h2 class="text-4xl font-extrabold mb-12 text-center
+           bg-gradient-to-r from-white to-purple-600
+           bg-clip-text text-transparent
+           drop-shadow-[0_4px_3px_rgba(139,92,246,0.7)]
+           animate-pulse">
+  My Skills
+</h2>
+
+
+
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <!-- Programming Languages -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-indigo-600 dark:text-indigo-300 flex items-center gap-2">Programming Languages
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>Python</span><span>80%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full w-[80%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Java</span><span>90%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full w-[90%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>C / C++</span><span>90%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full w-[90%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>JavaScript</span><span>20%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full w-[20%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>PHP</span><span>70%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full w-[70%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>MATLAB</span><span>60%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full w-[60%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Web Development -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-green-600 dark:text-green-300 flex items-center gap-2">
+      Web Development
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>HTML / CSS / Tailwind</span><span>90%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-green-500 h-2.5 rounded-full w-[90%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>React.js</span><span>20%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-green-500 h-2.5 rounded-full w-[20%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>DaisyUI</span><span>80%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-green-500 h-2.5 rounded-full w-[80%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>MySQL</span><span>75%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-green-500 h-2.5 rounded-full w-[75%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Firebase</span><span>75%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-green-500 h-2.5 rounded-full w-[75%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Java Technologies -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-yellow-500 flex items-center gap-2">
+      Java Technologies
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>Core Java</span><span>90%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-yellow-500 h-2.5 rounded-full w-[90%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>OOP in Java</span><span>95%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-yellow-500 h-2.5 rounded-full w-[95%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Spring Boot</span><span>70%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-yellow-500 h-2.5 rounded-full w-[70%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Machine Learning -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-pink-500 flex items-center gap-2">
+      Machine Learning
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>Model Training & Evaluation</span><span>75%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-pink-500 h-2.5 rounded-full w-[75%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>NumPy, Pandas, Matplotlib</span><span>80%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-pink-500 h-2.5 rounded-full w-[80%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Scikit-learn, TensorFlow</span><span>65%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-pink-500 h-2.5 rounded-full w-[65%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Mobile Development -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-orange-500 flex items-center gap-2">
+      Mobile Development
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>Android (Java)</span><span>60%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-orange-500 h-2.5 rounded-full w-[60%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Firebase Auth & DB</span><span>80%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-orange-500 h-2.5 rounded-full w-[80%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Flutter (Basic)</span><span>20%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-orange-500 h-2.5 rounded-full w-[20%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tools -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-teal-500 flex items-center gap-2">
+      Tools
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>Git & GitHub</span><span>90%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-teal-500 h-2.5 rounded-full w-[90%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>VS Code, IntelliJ, NetBeans</span><span>85%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-teal-500 h-2.5 rounded-full w-[85%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>XAMPP</span><span>80%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-teal-500 h-2.5 rounded-full w-[80%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Others -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+      <h3 class="text-xl font-semibold mb-4 text-blue-500 flex items-center gap-2">
+      Others
+      </h3>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <div class="flex justify-between"><span>OOP Concepts</span><span>95%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-blue-500 h-2.5 rounded-full w-[95%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Problem Solving & Algorithms</span><span>85%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-blue-500 h-2.5 rounded-full w-[85%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>API Integration</span><span>70%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-blue-500 h-2.5 rounded-full w-[70%] transition-all duration-700"></div>
+          </div>
+        </li>
+        <li>
+          <div class="flex justify-between"><span>Deployment & Hosting</span><span>75%</span></div>
+          <div class="bg-gray-300 dark:bg-gray-700 h-2.5 rounded-full">
+            <div class="bg-blue-500 h-2.5 rounded-full w-[75%] transition-all duration-700"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Education Section -->
+<section id="education" class="py-16 px-6 md:px-24  bg-gradient-to-r from-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 animate-fadeIn">
+  <h2 class="text-4xl font-bold mb-12 text-primary dark:text-accent text-center">Education</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- BSc -->
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 border-r-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+      <h3 class="text-2xl font-semibold text-indigo-600 dark:text-indigo-300">B.Sc in Computer Science</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-3">Bangladesh University of Business and Technology</p>
+      <span class="text-sm text-gray-500 dark:text-gray-400">2022 - 2025</span>
+      <ul class="mt-4 list-disc list-inside text-gray-700 dark:text-gray-300 text-sm">
+        <li>Final Semester</li>
+        <li>Specialized in Java, Data Structures & Algorithms</li>
+        <li>Capstone Project: Credit Card Fraud Detection</li>
+      </ul>
+    </div>
+
+    <!-- HSC -->
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 border-r-4 border-green-500 hover:shadow-2xl transition duration-300">
+      <h3 class="text-2xl font-semibold text-green-600 dark:text-green-300">Higher Secondary Certificate</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-3">IBN Taimiya School And College</p>
+      <span class="text-sm text-gray-500 dark:text-gray-400">Graduated: 2019</span>
+      <ul class="mt-4 list-disc list-inside text-gray-700 dark:text-gray-300 text-sm">
+        <li>Science Stream</li>
+        <li>Focus on Math & Computer</li>
+      </ul>
+    </div>
+
+    <!-- SSC -->
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 border-r-4 border-pink-500 hover:shadow-2xl transition duration-300">
+      <h3 class="text-2xl font-semibold text-pink-600 dark:text-pink-300">Secondary School Certificate</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 mb-3">IBN Taimiya School And College</p>
+      <span class="text-sm text-gray-500 dark:text-gray-400">Graduated: 2017</span>
+      <ul class="mt-4 list-disc list-inside text-gray-700 dark:text-gray-300 text-sm">
+        <li>Science Background</li>
+        <li>Strong base in Math & Physics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- Experience Section -->
+<section id="experience" class="py-16 px-6 md:px-24 bg-gradient-to-r from-blue-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 animate-fadeIn">
+  <h2 class="text-4xl font-bold mb-6 text-primary dark:text-accent">Experience</h2>
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- Card 1 -->
+    <div class="group p-6 bg-white dark:bg-gray-800 border-l-4 border-indigo-500 dark:border-indigo-400 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300 ease-in-out">
+      <h3 class="text-2xl font-semibold text-indigo-600 dark:text-indigo-300">ICT Teacher</h3>
+      <p class="text-gray-700 dark:text-gray-300 mt-1 italic">UCC Academic Coaching &mdash; June 2022 &ndash; July 2025</p>
+      <ul class="list-disc list-inside mt-3 text-gray-600 dark:text-gray-400 space-y-1">
+        <li>Delivered engaging and interactive ICT lessons for HSC students.</li>
+        <li>Designed structured lesson plans aligning with academic goals.</li>
+        <li>Provided one-on-one guidance and led multiple mock test sessions.</li>
+      </ul>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="group p-6 bg-white dark:bg-gray-800 border-l-4 border-green-500 dark:border-green-400 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300 ease-in-out">
+      <h3 class="text-2xl font-semibold text-green-600 dark:text-green-300">ICT Instructor (Short-Term)</h3>
+      <p class="text-gray-700 dark:text-gray-300 mt-1 italic">Proyash Academic & Admission Care &mdash; March 2023 &ndash; May 2023</p>
+      <ul class="list-disc list-inside mt-3 text-gray-600 dark:text-gray-400 space-y-1">
+        <li>Facilitated ICT classes focusing on HSC curriculum and admission topics.</li>
+        <li>Maintained and enhanced digital study materials and notes for students.</li>
+      </ul>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="group p-6 bg-white dark:bg-gray-800 border-l-4 border-pink-500 dark:border-pink-400 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300 ease-in-out">
+      <h3 class="text-2xl font-semibold text-pink-600 dark:text-pink-300">Intern: Web Developer</h3>
+      <p class="text-gray-700 dark:text-gray-300 mt-1 italic">TheNextBD.com &mdash; May 2023 &ndash; July 2023</p>
+      <ul class="list-disc list-inside mt-3 text-gray-600 dark:text-gray-400 space-y-1">
+        <li>Developed responsive front-end interfaces using HTML, CSS, and Tailwind CSS.</li>
+        <li>Integrated dynamic functionalities with JavaScript and PHP for real-time data handling.</li>
+        <li>Worked in an agile team environment to troubleshoot bugs and deploy new features.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Projects Section -->
+<section id="projects" class="relative py-16 px-6 md:px-24 bg-gradient-to-r from-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 animate-fadeIn overflow-hidden">
+
+  <!-- Optional Subtle Pattern -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 dark:opacity-5 pointer-events-none"></div>
+
+  <div class="relative z-10">
+    <h2 class="text-4xl font-bold mb-10 text-primary dark:text-accent">Projects</h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Project Card 1 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">Fruit-Bajar</h3>
+        <p class="font-medium">Java-based billing application</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          This is a Java-based billing application designed for real-time receipt generation. It ensures accurate transaction management by validating product quantities and enforcing bill calculations before receipt printing.
+        </p>
+        <a href="https://github.com/RidwanSupon/Fruit-Bajar" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">Tour-App</h3>
+        <p class="font-medium">Android project (Java)</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          A tour booking Android application developed using Java, featuring dynamic trip listings and booking management.
+        </p>
+        <a href="https://github.com/RidwanSupon/Tour-App" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Project Card 3 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">Shobdho</h3>
+        <p class="font-medium">Vocabulary Android App (Java)</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          A vocabulary-building Android app that helps users learn new words with meanings, synonyms, and pronunciation.
+        </p>
+        <a href="https://github.com/RidwanSupon/Shobdho" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Project Card 4 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">YumRush</h3>
+        <p class="font-medium">Food Court Management System (PHP)</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          A management system for food courts developed in PHP, handling orders, inventory, and daily sales.
+        </p>
+        <a href="https://github.com/RidwanSupon/YumRush" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Project Card 5 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">Blood_Society</h3>
+        <p class="font-medium">Blood Donation Management (PHP)</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          PHP-based web application designed to efficiently manage blood donation activities, donor registration, blood inventory, and exchange. Hosted locally with XAMPP and PHPMyAdmin.
+        </p>
+        <a href="https://github.com/RidwanSupon/Blood_Society" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Project Card 6 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">Plant-Disease-Recognition</h3>
+        <p class="font-medium">Deep Learning Project</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          A deep learning project that detects plant diseases from leaf images, assisting farmers and researchers in identifying issues quickly to improve crop health.
+        </p>
+        <a href="https://github.com/RidwanSupon/Plant-Disease-Recognition" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Project Card 7 -->
+      <div class="group border border-blue-200 dark:border-gray-600 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-700 transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-white dark:hover:bg-gray-600">
+        <h3 class="text-2xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300 group-hover:text-pink-600 transition">Biker-s-Complex</h3>
+        <p class="font-medium">Bootstrap-based Website</p>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">
+          A basic website created using Bootstrap to showcase simple layout and responsive design.
+        </p>
+        <a href="https://github.com/RidwanSupon/Biker-s-Complex" target="_blank" rel="noopener" class="inline-flex items-center mt-4 text-indigo-600 dark:text-indigo-400 hover:text-pink-600 dark:hover:text-pink-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 17.07 3.633 16.7 3.633 16.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.76-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .321.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-6 md:px-24  bg-gradient-to-r from-blue-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900   animate-fadeIn text-center">
+  <h2 class="text-4xl font-bold mb-6 text-primary dark:text-accent">Contact</h2>
+  <p class="mb-6 text-lg">Feel free to reach out to me through the following platforms:</p>
+  <ul class="space-y-6 text-lg max-w-md mx-auto">
+    <li>
+      <a
+        href="mailto:ridwansupon@gmail.com"
+        class="text-primary dark:text-accent underline flex items-center justify-center space-x-2 mx-auto max-w-max
+               transform transition-transform duration-300 hover:scale-105 hover:text-indigo-600 dark:hover:text-indigo-400"
+        target="_blank" rel="noopener"
+      >
+        <span class="text-2xl"><img src="gmail.png"alt="Gmail" class="w-6 h-6 object-contain"></span>
+        <span>ridwansupon@gmail.com</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/ridwansupon"
+        target="_blank" rel="noopener"
+        class="text-primary dark:text-accent underline flex items-center justify-center space-x-2 mx-auto max-w-max
+               transform transition-transform duration-300 hover:scale-105 hover:text-indigo-600 dark:hover:text-indigo-400"
+      >
+        <span class="text-2xl"><img src="github.png" alt="github" class="w-6 h-6 object-contain"></span>
+        <span>github.com/ridwansupon</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.linkedin.com/in/md-ridwanur-r-mazumder-4a8298155/"
+        target="_blank" rel="noopener"
+        class="text-primary dark:text-accent underline flex items-center justify-center space-x-2 mx-auto max-w-max
+               transform transition-transform duration-300 hover:scale-105 hover:text-indigo-600 dark:hover:text-indigo-400"
+      >
+        <span class="text-2xl"><img src="linkedin.png" alt=""class="w-6 h-6 object-contain"></span>
+        <span>linkedin.com/in/ridwansupon</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+
+
+
+</main>
+
+<footer class="text-center py-6
+  bg-gradient-to-r text-white from-gray-900 via-gray-800 to-gray-700
+  dark:bg-gradient-to-r dark:from-black dark:via-purple-900 dark:to-purple-800 mt-8">
+  <p class="text-sm text-white">
+    © 2025 Ridwanur Rahman Mazumder. All rights reserved.
+  </p>
+</footer>
+
+
+
+
+</body>
+</html>
